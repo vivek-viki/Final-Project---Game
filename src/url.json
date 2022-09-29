@@ -1,5 +1,6 @@
 {
 "Endpoints":{
-    "VERFIY_USER"  : "http://localhost:8080/api/adduser"
+    "ADD_USER"  : "http://localhost:8080/api/adduser",
+    "VERFIY_USER" : "http://localhost:8080/api/verifyuser"
 }
 }

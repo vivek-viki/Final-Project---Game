@@ -14,16 +14,25 @@ class App extends React.Component {
 
   render()
   {
+      const enableuser = localStorage.getItem("enableuser");
+
       return(
-   // <div style={{marginTop : '8%'}}>
-    // <BrowserRouter>
+        <>
+     {/* <div style={{marginTop : '8%'}}> */}
+     {/* <BrowserRouter> */}
     <Routes >
          <Route path="/" element={<Homepage {...this.props} />}/>
                 <Route path="/Login" element={<Login  {...this.props}/>} />
                 <Route path="/Signup" element={<WithSignUp {...this.props}/>} />
+                {enableuser ? 
+                <Route path="/Homepage" element={"homepage"}/>
+                :
+                ""
+              }
       </Routes>
-      // </BrowserRouter>
-     // </div>
+       {/* </BrowserRouter> */}
+       {/* </div> */}
+      </>
      );
     }
 }

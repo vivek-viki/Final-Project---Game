@@ -69,20 +69,26 @@ class Signup extends React.Component {
     }
 
     handleSignUp = () => {
-        debugger;
+
         if(this.state.password != "" && this.state.userid != "" && this.state.confirm_password != "" && this.state.password === this.state.confirm_password)
         {
-            axios.post(URL.Endpoints.VERFIY_USER, {
+            axios.post(URL.Endpoints.ADD_USER, {
                 userid : this.state.userid,
                 password : this.state.password
             })
             .then(data =>{
+                if(data.data.length)
+                {
+                    this.props.snackbarShowMessage(`user ` + data.data[0].userid + ` already exists.`, `error`);
+                }
+                else
+                {
                 this.props.snackbarShowMessage(`user ` + data.data.userid + ` created successfully.`, `success`);
              this.setState({ response: data,
              userid : "",
              password : "",
              confirm_password : ""
-            })});
+            })}});
         }
         else
         {

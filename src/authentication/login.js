@@ -4,7 +4,8 @@ import Card from '@mui/material/Card';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import URL from '../url.json';
-
+import { withSnackbar } from '../shared/snackbar';
+import { useNavigate } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor(props){
@@ -13,7 +14,8 @@ class Login extends React.Component {
             userid_helpertext : false,
             password_helpertext : false,
             userid : "",
-            password : ""
+            password : "",
+            response : 0
         }
     }
 
@@ -50,9 +52,26 @@ class Login extends React.Component {
     }
     
     handleSubmit = () => {
+
         if(this.state.password != "" && this.state.userid != "")
         {
-            
+            axios.post(URL.Endpoints.VERFIY_USER, {
+                userid : this.state.userid,
+                password : this.state.password
+            }).then(data =>
+                {
+                    if(data.data.length > 0)
+                    {
+                        localStorage.setItem("enableuser", 1);
+                        this.props.navigate("/Homepage");
+                    }
+                    else
+                    {
+                        localStorage.setItem("enableuser", 0);
+                        this.props.snackbarShowMessage(`invalid credentails.`, `error`);
+                        
+                    }
+                })
         }
         else
         {
@@ -110,5 +129,11 @@ class Login extends React.Component {
         );
     }
 }
-
-export default Login;
+function WithLogin(props) {
+    const navigate = useNavigate();
+    return (
+      <Login {...props} navigate={navigate} />
+    );
+  }
+  
+export default withSnackbar(WithLogin);
