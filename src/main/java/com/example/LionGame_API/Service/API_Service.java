@@ -22,4 +22,7 @@ public class API_Service {
         return repo.save(user);
     }
 
+    public List<UserData> verifyuser(UserData user) {
+        return repo.findByUseridAndPassword(user.getUserid(), user.getPassword());
+    }
 }
