@@ -11,6 +11,8 @@ class Header extends React.Component {
      
     }
     homepage = () => {
+        localStorage.setItem("enableuser", 0);
+        localStorage.setItem("userid", ""); 
         this.props.navigate("/");
 
     }
@@ -21,7 +23,7 @@ class Header extends React.Component {
             <>
                 <div className="header row">
                     <div className="col-md-6"  >
-                        <img src={logo} alt="cannot load logo" onClick={this.homepage} style={{}} />
+                        <img className='img' src={logo} alt="cannot load logo" onClick={this.homepage} style={{}} />
                     </div>
 
                     <div className="col-md-6"  >

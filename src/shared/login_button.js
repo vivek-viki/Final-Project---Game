@@ -23,6 +23,7 @@ class Login_Button extends React.Component {
 
     logout = () => {
         localStorage.setItem("enableuser", 0);
+        localStorage.setItem("userid", ""); 
         this.props.navigate("/")
     }
 
@@ -41,7 +42,6 @@ class Login_Button extends React.Component {
                 <Chip
                 variant="outlined"
                 color="neutral"
-                size="lg"
                  startDecorator={<Avatar size="sm" />}
                  endDecorator={<CheckIcon fontSize="md" />}
                 

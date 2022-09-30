@@ -7,6 +7,7 @@ import Homepage from './components/homepage';
 import React from 'react';
 import WithSignUp from './authentication/signup';
 import Dashboard from './components/dashboard';
+import Game from './components/game';
 
 class App extends React.Component {
   constructor(props){
@@ -25,9 +26,12 @@ class App extends React.Component {
          <Route path="/" element={<Homepage {...this.props} />}/>
                 <Route path="/Login" element={<Login  {...this.props}/>} />
                 <Route path="/Signup" element={<WithSignUp {...this.props}/>} />
-                {/* <Route path="/*" element={<Navigate to="/" replace />} /> */}
+                <Route path="/*" element={<Navigate to="/" replace />} />
                 {(enableuser == "1") ? 
+                <>
                 <Route path="/dashboard" element={<Dashboard {...this.props}/>}/>
+                <Route path="/game" element={<Game {...this.props}/>}/>
+                </>
                 :
                 ""
               }

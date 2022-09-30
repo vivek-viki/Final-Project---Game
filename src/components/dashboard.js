@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount(){
-        debugger;
+    
         axios.post(URL.Endpoints.GET_SCORE,{
             userid : localStorage.getItem("userid")
         }
@@ -32,6 +32,9 @@ class Dashboard extends React.Component {
 
     onClose = () => {
         this.setState({enablepopup : false});
+    }
+    startgame = () => {
+        this.props.navigate("/game")
     }
     render()
     {

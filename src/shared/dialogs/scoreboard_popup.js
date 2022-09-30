@@ -59,8 +59,11 @@ class Scoreboard extends React.Component {
                                                 </TableRow>
                                             );
                                         })}
+                                        
                                     </TableBody>
+                                    
                                 </Table>
+                                {this.props.score.length == 0 ? <p style={{textAlign:'center'}}>Not yet played</p>:""}
                             </TableContainer>
                 </DialogContent>
             </Dialog>
