@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DBRepo extends JpaRepository<UserData, Integer> {
+public interface DBRepoUser extends JpaRepository<UserData, Integer> {
 
     List<UserData> findByUserid(String userid);
 

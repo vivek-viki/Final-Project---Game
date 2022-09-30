@@ -1,20 +1,19 @@
 package com.example.LionGame_API.Service;
 
-import com.example.LionGame_API.DB_Repo.DBRepo;
+import com.example.LionGame_API.DB_Repo.DBRepoUser;
 import com.example.LionGame_API.Model.UserData;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class API_Service {
+public class API_Service_User {
 
     @Autowired
-    private DBRepo repo;
+    private DBRepoUser repo;
 
-    public API_Service(DBRepo repo) {
+    public API_Service_User(DBRepoUser repo) {
         this.repo = repo;
     }
 

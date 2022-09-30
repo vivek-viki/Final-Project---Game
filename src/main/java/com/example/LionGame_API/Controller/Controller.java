@@ -1,8 +1,10 @@
 package com.example.LionGame_API.Controller;
 
-import com.example.LionGame_API.DB_Repo.DBRepo;
+import com.example.LionGame_API.DB_Repo.DBRepoUser;
+import com.example.LionGame_API.Model.Scoreboard;
 import com.example.LionGame_API.Model.UserData;
-import com.example.LionGame_API.Service.API_Service;
+import com.example.LionGame_API.Service.API_Service_Scoreboard;
+import com.example.LionGame_API.Service.API_Service_User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +15,14 @@ import java.util.List;
 public class Controller {
 
         @Autowired
-        private API_Service serviceObj;
-        private DBRepo repo;
+        private API_Service_User serviceObj;
+        @Autowired
+        private API_Service_Scoreboard scoreboardObj;
+        private DBRepoUser repo;
 
-    public Controller(API_Service serviceObj, DBRepo repo) {
+    public Controller(API_Service_User serviceObj, API_Service_Scoreboard scoreboardObj, DBRepoUser repo) {
         this.serviceObj = serviceObj;
+        this.scoreboardObj = scoreboardObj;
         this.repo = repo;
     }
 
@@ -40,5 +45,12 @@ public class Controller {
     public List<UserData> verifyUser(@RequestBody UserData user)
     {
             return serviceObj.verifyuser(user);
+    }
+
+    @CrossOrigin
+    @PostMapping("/getscore")
+    public List<Scoreboard> getuserscore(@RequestBody Scoreboard score)
+    {
+        return scoreboardObj.getscore(score);
     }
 }
