@@ -12,8 +12,18 @@ class Dashboard extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            enablepopup : false
+            enablepopup : false,
+            score : []
         }
+    }
+
+    componentDidMount(){
+        debugger;
+        axios.post(URL.Endpoints.GET_SCORE,{
+            userid : localStorage.getItem("userid")
+        }
+            )
+        .then(data =>this.setState({score : data.data}))
     }
 
     scoreboard = () => {
@@ -36,6 +46,7 @@ class Dashboard extends React.Component {
                    {<Scoreboard
             keepMounted
             open={this.state.enablepopup}
+            score = {this.state.score}
             onClose={this.onClose}
             {...this.props}
              />}

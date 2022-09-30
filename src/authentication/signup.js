@@ -69,7 +69,7 @@ class Signup extends React.Component {
     }
 
     handleSignUp = () => {
-
+debugger;
         if(this.state.password != "" && this.state.userid != "" && this.state.confirm_password != "" && this.state.password === this.state.confirm_password)
         {
             axios.post(URL.Endpoints.ADD_USER, {

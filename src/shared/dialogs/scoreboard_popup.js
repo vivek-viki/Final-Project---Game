@@ -47,25 +47,18 @@ class Scoreboard extends React.Component {
                                         <TableRow>
                                             <TableCell sx={{backgroundColor: '#1976d2'}}>User ID</TableCell>
                                             <TableCell sx={{backgroundColor: '#1976d2'}}>Score</TableCell>
-                                            <TableCell sx={{backgroundColor: '#1976d2'}}>Time</TableCell>
+                                            {/* <TableCell sx={{backgroundColor: '#1976d2'}}>Time</TableCell> */}
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {/* {tableData.map((row, index) => {
+                                        {this.props.score.map((row, index) => {
                                             return (
                                                 <TableRow  >
-                                                    <TableCell >
-                                                    
-                                                        <IconButton aria-label="download" size="large" >
-                                                            <DownloadIcon fontSize="small" />
-                                                        </IconButton>
-                                                    </TableCell>
-                                                    <TableCell >{row.FileName}</TableCell>
-                                                    <TableCell >{row.FileExtension}</TableCell>
-                                                    <TableCell >{row.Refund_Document_Size}</TableCell>
+                                                    <TableCell >{row.userid}</TableCell>
+                                                    <TableCell >{row.score}</TableCell>
                                                 </TableRow>
                                             );
-                                        })} */}
+                                        })}
                                     </TableBody>
                                 </Table>
                             </TableContainer>
