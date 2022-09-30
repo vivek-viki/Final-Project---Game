@@ -52,7 +52,6 @@ class Login extends React.Component {
     }
     
     handleSubmit = () => {
-
         if(this.state.password != "" && this.state.userid != "")
         {
             axios.post(URL.Endpoints.VERFIY_USER, {
@@ -63,7 +62,8 @@ class Login extends React.Component {
                     if(data.data.length > 0)
                     {
                         localStorage.setItem("enableuser", 1);
-                        this.props.navigate("/Homepage");
+                        localStorage.setItem("userid", data.data[0].userid)
+                        this.props.navigate("/dashboard");
                     }
                     else
                     {
