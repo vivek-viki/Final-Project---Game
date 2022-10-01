@@ -45,7 +45,7 @@ public class Controller {
     public String changepassword(@RequestBody UserData user)
     {
         List<UserData> checkuser = (List<UserData>) repo.findByUserid(user.getUserid());
-        if(checkuser.get(0).getPassword().equals(user.getPassword()))
+        if( checkuser.size() > 0 && checkuser.get(0).getPassword().equals(user.getPassword()))
         {
             return "exists";
         }
