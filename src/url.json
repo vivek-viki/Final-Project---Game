@@ -2,6 +2,7 @@
 "Endpoints":{
     "ADD_USER"  : "http://localhost:8080/api/adduser",
     "VERFIY_USER" : "http://localhost:8080/api/verifyuser",
-    "GET_SCORE" : "http://localhost:8080/api/getscore"
+    "GET_SCORE" : "http://localhost:8080/api/getscore",
+    "FORGOT_PASSWORD" : "http://localhost:8080/api/changepassword"
 }
 }

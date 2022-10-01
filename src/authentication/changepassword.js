@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { withSnackbar } from '../shared/snackbar';
+import URL from '../url.json';
 
 class ChangePassword extends React.Component {
     constructor(props){
@@ -66,25 +67,32 @@ class ChangePassword extends React.Component {
     }
 
     ChangePassword = () => {
+        debugger;
         if(this.state.password != "" && this.state.userid != "" && this.state.reenter_password != "" && this.state.password === this.state.reenter_password)
         {
-            axios.post(URL.Endpoints.ADD_USER, {
+            axios.put(URL.Endpoints.FORGOT_PASSWORD, {
                 userid : this.state.userid,
                 password : this.state.password
             })
             .then(data =>{
-                if(data.data.length)
+                if(data.data == 1)
                 {
-                    this.props.snackbarShowMessage(`user ` + data.data[0].userid + ` Not exists.`, `error`);
+                    this.props.snackbarShowMessage(`Password changed successfully.`, `success`);
+                    this.setState({ response: data,
+                        userid : "",
+                        password : "",
+                        reenter_password : ""
+                        })
+                    
                 }
-                else
+                if(data.data == "exists")
                 {
-                this.props.snackbarShowMessage(`Password changes successfully.`, `success`);
-             this.setState({ response: data,
-             userid : "",
-             password : "",
-             confirm_password : ""
-            })}});
+                    this.props.snackbarShowMessage(`cannot enter previous password.`, `error`);
+                }
+                if(data.data == 0)
+                {
+                    this.props.snackbarShowMessage(`user ` + this.state.userid + ` Not exists.`, `error`);
+                }});
         }
         else
         {
