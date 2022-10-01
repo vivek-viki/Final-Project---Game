@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
-import { Button } from '@mui/material';
+import { Button, Link } from '@mui/material';
 import axios from 'axios';
 import URL from '../url.json';
 import { withSnackbar } from '../shared/snackbar';
@@ -116,8 +116,13 @@ class Login extends React.Component {
           onChange = {this.setPassword}
         />
             </div>
-            <br/>
+           
+            <Link href="/changepassword" underline="hover" sx={{marginLeft:'21%'}}>
+                 {'Forgot Password'}
+            </Link>
+            
             <div>
+            <br/>
                 <Button variant="contained" sx={{width : '40%'}} onClick={this.handleSubmit}>Login</Button>
             </div>
             <br/>

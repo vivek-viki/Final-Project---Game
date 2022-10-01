@@ -1,22 +1,19 @@
-import React from 'react';
-import TextField from '@mui/material/TextField';
-import Card from '@mui/material/Card';
-import { Button } from '@mui/material';
+import { Button, Card, TextField } from '@mui/material';
 import axios from 'axios';
-import URL from '../url.json';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { withSnackbar } from '../shared/snackbar';
 
-class Signup extends React.Component {
+class ChangePassword extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            userid : "",
-            password : "",
-            confirm_password : "",
             userid_helpertext : false,
             password_helpertext : false,
-            confirmPass_helpertext : false,
-            response : []
+            retype_password_helpertext : false,
+            userid : "",
+            password : "",
+            reenter_password : ""
         }
     }
 
@@ -51,26 +48,25 @@ class Signup extends React.Component {
             password_helpertext : pass_helpertext
         })
     }
-    
-    setConfirmPassword = (e) => {
-        let confirm_password = e.target.value;
-        let confirmpassword_helpertext = this.state.confirmPass_helpertext;
+
+    setRetype_Password = (e) => {
+        let retype_password = e.target.value;
+        let reenter_password_helpertext = this.state.retype_password_helpertext;
         if(e.target.value)
         {
-            confirmpassword_helpertext = false
+            reenter_password_helpertext = false
         }
         else{
-            confirmpassword_helpertext = true
+            reenter_password_helpertext = true
         }
         this.setState({
-            confirm_password : confirm_password,
-            confirmPass_helpertext : confirmpassword_helpertext
+            reenter_password : retype_password,
+            retype_password_helpertext : reenter_password_helpertext
         })
     }
 
-    handleSignUp = () => {
-
-        if(this.state.password != "" && this.state.userid != "" && this.state.confirm_password != "" && this.state.password === this.state.confirm_password)
+    ChangePassword = () => {
+        if(this.state.password != "" && this.state.userid != "" && this.state.reenter_password != "" && this.state.password === this.state.reenter_password)
         {
             axios.post(URL.Endpoints.ADD_USER, {
                 userid : this.state.userid,
@@ -79,11 +75,11 @@ class Signup extends React.Component {
             .then(data =>{
                 if(data.data.length)
                 {
-                    this.props.snackbarShowMessage(`user ` + data.data[0].userid + ` already exists.`, `error`);
+                    this.props.snackbarShowMessage(`user ` + data.data[0].userid + ` Not exists.`, `error`);
                 }
                 else
                 {
-                this.props.snackbarShowMessage(`user ` + data.data.userid + ` created successfully.`, `success`);
+                this.props.snackbarShowMessage(`Password changes successfully.`, `success`);
              this.setState({ response: data,
              userid : "",
              password : "",
@@ -92,7 +88,7 @@ class Signup extends React.Component {
         }
         else
         {
-            if(this.state.password != this.state.confirm_password)
+            if(this.state.password != this.state.reenter_password)
             {
                 this.props.snackbarShowMessage(`Password not matched.`, `error`);
             }
@@ -104,19 +100,19 @@ class Signup extends React.Component {
             {
                 this.setState({password_helpertext : true})
             }
-            if(this.state.confirm_password == "")
+            if(this.state.reenter_password == "")
             {
-                this.setState({confirmPass_helpertext : true})
+                this.setState({retype_password_helpertext : true})
             }
            
         }
     }
-    render()
-    {
+
+    render(){
         return(
             <>
-            <Card sx={{  justifyContent: 'center',  width: '50%', marginLeft:'25%', marginTop : '15%' }}>
-            <div style={{textAlign: 'center'}}>
+              <Card sx={{  justifyContent: 'center',  width: '50%', marginLeft:'25%', marginTop : '15%' }}>
+                <div style={{textAlign: 'center'}}>
             <div>
             <TextField
             value = {this.state.userid}
@@ -125,50 +121,53 @@ class Signup extends React.Component {
           variant="standard"
           sx={{width : '40%'}}
           error = {this.state.userid_helpertext}
-          onChange={this.setUserId}
+          onChange = {this.setUserId}
         />
         </div>
         <br/>
             <div>
             <TextField
-            value = {this.state.password}
-          label="Password"
+            value={this.state.password}
+          label="New Password"
           id="standard-error-helper-text"
           variant="standard"
           sx={{width : '40%'}}
           error = {this.state.password_helpertext}
-          onChange={this.setPassword}
+          onChange = {this.setPassword}
         />
             </div>
             <br/>
+
             <div>
             <TextField
-            value={this.state.confirm_password}
+            value={this.state.reenter_password}
           label="Re-Enter Password"
           id="standard-error-helper-text"
           variant="standard"
           sx={{width : '40%'}}
-          error = {this.state.confirmPass_helpertext}
-          onChange={this.setConfirmPassword}
-          />
+          error = {this.state.retype_password_helpertext}
+          onChange = {this.setRetype_Password}
+        />
             </div>
             <br/>
+
             <div>
-                <Button variant="contained" sx={{width : '40%'}} onClick={this.handleSignUp}>Sign Up</Button>
+                <Button variant="contained" sx={{width : '40%'}} onClick={this.ChangePassword}>Change Password</Button>
             </div>
             <br/>
-    </div>
+            </div>
+    
     </Card>
-           
             </>
-        );
+        )
     }
 }
 
-function WithSignUp(props) {
+function WithChangePassword(props) {
+    const navigate = useNavigate();
     return (
-      <Signup {...props} />
+      <ChangePassword {...props} navigate={navigate} />
     );
   }
   
-export default withSnackbar(WithSignUp);
+export default withSnackbar(WithChangePassword);
