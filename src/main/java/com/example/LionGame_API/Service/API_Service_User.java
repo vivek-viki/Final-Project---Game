@@ -24,4 +24,12 @@ public class API_Service_User {
     public List<UserData> verifyuser(UserData user) {
         return repo.findByUseridAndPassword(user.getUserid(), user.getPassword());
     }
+
+    public Object changePassword(UserData checkuser) {
+        return  repo.save(checkuser);
+    }
+
+//    public List<UserData> getByUserid(String userid) {
+//        return repo.findByUserid(userid);
+//    }
 }

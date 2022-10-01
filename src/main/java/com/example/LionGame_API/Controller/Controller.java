@@ -41,6 +41,21 @@ public class Controller {
     }
 
     @CrossOrigin
+    @PostMapping("/changepassword")
+    public Object changepassword(@RequestBody UserData user)
+    {
+        List<UserData> checkuser = (List<UserData>) repo.findByUserid(user.getUserid());
+        if(checkuser.size() > 0 && checkuser.get(0).getUserid().equals(user.getUserid()))
+        {
+            checkuser.get(0).setPassword(user.getPassword());
+            return "1";
+        }
+        else {
+            return "0";
+        }
+    }
+
+    @CrossOrigin
     @PostMapping("/verifyuser")
     public List<UserData> verifyUser(@RequestBody UserData user)
     {
