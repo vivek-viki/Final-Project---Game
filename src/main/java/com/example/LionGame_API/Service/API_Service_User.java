@@ -29,7 +29,4 @@ public class API_Service_User {
         return  repo.save(checkuser);
     }
 
-//    public List<UserData> getByUserid(String userid) {
-//        return repo.findByUserid(userid);
-//    }
 }

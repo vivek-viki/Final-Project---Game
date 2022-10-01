@@ -41,13 +41,18 @@ public class Controller {
     }
 
     @CrossOrigin
-    @PostMapping("/changepassword")
-    public Object changepassword(@RequestBody UserData user)
+    @PutMapping("/changepassword")
+    public String changepassword(@RequestBody UserData user)
     {
         List<UserData> checkuser = (List<UserData>) repo.findByUserid(user.getUserid());
+        if(checkuser.get(0).getPassword().equals(user.getPassword()))
+        {
+            return "exists";
+        }
         if(checkuser.size() > 0 && checkuser.get(0).getUserid().equals(user.getUserid()))
         {
             checkuser.get(0).setPassword(user.getPassword());
+             repo.save(checkuser.get(0));
             return "1";
         }
         else {
