@@ -1,18 +1,47 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("assests/images/background_img.jpg");
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: inherit !important;
 }
 
 .background_img {
   background-image: url("assests/images/background.jpg");
+}
+
+.css-sghohy-MuiButtonBase-root-MuiButton-root{
+  font-family: inherit !important;
+}
+
+.css-ahj2mt-MuiTypography-root{
+  font-family: inherit !important;
+}
+
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+  font-family: inherit !important;
+}
+
+.css-151mv6h-MuiTypography-root-MuiDialogTitle-root{
+  font-family: inherit !important;
+}
+
+.css-90vjh1-MuiTableCell-root{
+  font-family: inherit !important;
+}
+
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root{
+  font-family: inherit !important;
+}
+
+.css-1ex1afd-MuiTableCell-root{
+  font-family: inherit !important;
+}
+
+.css-1ptx2yq-MuiInputBase-root-MuiInput-root{
+  font-family: inherit !important;
 }

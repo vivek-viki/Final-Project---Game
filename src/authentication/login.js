@@ -117,7 +117,7 @@ class Login extends React.Component {
         />
             </div>
            
-            <Button  sx={{marginLeft:'21%'}} onClick={(e) => {
+            <Button  sx={{marginLeft:'21%', fontFamily : 'inherit'}} onClick={(e) => {
                                                         this.props.navigate("/changepassword");
                                                         }}>
                  {'Forgot Password'}
@@ -125,7 +125,7 @@ class Login extends React.Component {
             
             <div>
             <br/>
-                <Button variant="contained" sx={{width : '40%'}} onClick={this.handleSubmit}>Login</Button>
+                <Button variant="contained" sx={{width : '40%', fontFamily : 'inherit'}} onClick={this.handleSubmit}>Login</Button>
             </div>
             <br/>
             </div>

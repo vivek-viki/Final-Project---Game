@@ -154,7 +154,7 @@ class Signup extends React.Component {
             </div>
             <br/>
             <div>
-                <Button variant="contained" sx={{width : '40%'}} onClick={this.handleSignUp}>Sign Up</Button>
+                <Button variant="contained" sx={{width : '40%', fontFamily : 'inherit'}} onClick={this.handleSignUp}>Sign Up</Button>
             </div>
             <br/>
     </div>

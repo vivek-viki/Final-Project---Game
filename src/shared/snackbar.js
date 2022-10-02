@@ -37,7 +37,7 @@ export const withSnackbar = WrappedComponent => {
           onClose={handleClose}
           TransitionComponent={Slide}
         >
-          <Alert variant="filled" onClose={handleClose} severity={severity}>
+          <Alert variant="filled" sx={{fontFamily : 'inherit'}} onClose={handleClose} severity={severity}>
             {message}
           </Alert>
         </Snackbar>

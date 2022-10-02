@@ -73,10 +73,6 @@ class Game extends React.Component{
 
     count = (e) => {
         debugger;
-        // if(this.state.time.s == 0)
-        // {
-        //     this.props.navigate("/dashboard");
-        // }
        let count =this.state.count + 1;
         if(count == this.state.images[0].count)
         {
@@ -112,7 +108,7 @@ class Game extends React.Component{
  
         return(
             <>
-            <p style={{color:'antiquewhite', marginTop:'5%', fontSize:'30px', fontFamily : 'monospace' , textAlign : 'center'}}>  {this.state.time.s}</p>
+            <p style={{color:'antiquewhite', marginTop:'5%', fontSize:'30px', fontFamily : 'inherit' , textAlign : 'center'}}>  {this.state.time.s}</p>
             <Card sx={{  justifyContent: 'center', marginRight:'3%', marginLeft:'3%', height : '390px' }}> 
                 {this.state.images.map((image) => {
                      return <img src={image.image_1}  height='100%' width="100%" onDoubleClick={this.count}></img>

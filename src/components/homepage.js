@@ -20,7 +20,7 @@ class Homepage extends React.Component {
             <>
             <Card sx={{  justifyContent: 'center',  width: '50%', marginLeft:'25%', marginTop : '15%' }} className="background_img">
             <div style={{textAlign: 'center'}}>
-            <Typography sx={{fontSize : '30px'}}>About Game</Typography>
+            <Typography sx={{fontSize : '30px', fontFamily : 'inherit'}}>About Game</Typography>
             <br/>
            <Typography>Lion to Sheep hunting game in limited time</Typography>
            <br/>
