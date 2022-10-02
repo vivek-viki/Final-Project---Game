@@ -73,4 +73,11 @@ public class Controller {
     {
         return scoreboardObj.getscore(score);
     }
+
+    @CrossOrigin
+    @PostMapping("addscore")
+    public void addscore(@RequestBody Scoreboard score)
+    {
+        scoreboardObj.addscore(score);
+    }
 }

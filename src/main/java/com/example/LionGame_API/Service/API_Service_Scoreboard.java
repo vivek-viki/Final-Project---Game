@@ -21,4 +21,8 @@ public class API_Service_Scoreboard {
     public List<Scoreboard> getscore(Scoreboard score) {
         return repo.findByUserid(score.getUserid());
     }
+
+    public void addscore(Scoreboard score) {
+        repo.save(score);
+    }
 }
