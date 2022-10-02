@@ -101,7 +101,8 @@ class Game extends React.Component{
                  
                 }
                 )
-        }
+        
+    }
         this.setState({
             count : count
         })
@@ -118,8 +119,7 @@ class Game extends React.Component{
                 })
 
                 }
-       
-           
+        
              </Card>
             </>
         )
