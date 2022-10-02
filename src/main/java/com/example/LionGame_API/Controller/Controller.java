@@ -75,7 +75,7 @@ public class Controller {
     }
 
     @CrossOrigin
-    @PostMapping("addscore")
+    @PostMapping("/addscore")
     public void addscore(@RequestBody Scoreboard score)
     {
         scoreboardObj.addscore(score);
