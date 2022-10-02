@@ -20,9 +20,7 @@ class App extends React.Component {
       const enableuser = localStorage.getItem("enableuser");
 
       return(
-        <>
-     {/* <div style={{marginTop : '8%'}}> */}
-     {/* <BrowserRouter> */}
+        <>;
     <Routes>
          <Route path="/" element={<Homepage {...this.props} />}/>
                 <Route path="/Login" element={<Login  {...this.props}/>} />
@@ -38,8 +36,6 @@ class App extends React.Component {
                 ""
               }
       </Routes>
-       {/* </BrowserRouter> */}
-       {/* </div> */}
       </>
      );
     }
