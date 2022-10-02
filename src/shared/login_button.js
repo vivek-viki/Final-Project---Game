@@ -8,7 +8,18 @@ import Chip from '@mui/joy/Chip';
 class Login_Button extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            enableuser : true
+        }
 
+    }
+
+    componentDidMount(){
+       let enableuser =  localStorage.getItem("enableuser")
+       if(enableuser == "1")
+       {
+        this.setState({enableuser : false})
+       }
     }
 
     login = () => {
@@ -31,6 +42,7 @@ class Login_Button extends React.Component {
     {
         const enableuser = localStorage.getItem("enableuser");
         const userid = localStorage.getItem("userid");
+ 
         return(
             <>
             <div style={{marginTop : '8.5%', float : 'right', display : 'flex'}}>
@@ -50,7 +62,7 @@ class Login_Button extends React.Component {
                  </Chip>
                 <div className='col-md-1'></div>
                 </> : ""}
-                 <Button hidden={enableuser == "0"} variant="contained" onClick={this.logout} >Logout</Button>
+                 <Button hidden={this.state.enableuser } variant="contained" onClick={this.logout} >Logout</Button>
             </div>
             </>
             );
