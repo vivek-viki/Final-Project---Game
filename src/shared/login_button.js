@@ -35,7 +35,8 @@ class Login_Button extends React.Component {
     logout = () => {
         localStorage.setItem("enableuser", 0);
         localStorage.setItem("userid", ""); 
-        this.props.navigate("/")
+        this.props.navigate("/");
+        this.setState({enableuser : true})
     }
 
     render()
