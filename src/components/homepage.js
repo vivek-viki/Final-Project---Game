@@ -24,9 +24,9 @@ class Homepage extends React.Component {
             <br/>
            <Typography>Lion to Sheep hunting game in limited time</Typography>
            <br/>
-           <Typography>1. sheep will be placed in the image</Typography>
-           <Typography>2. identify the sheep </Typography>
-           <Typography>3. place mouse pointer at the image </Typography>
+           <Typography>1. Sheep will be placed in the image</Typography>
+           <Typography>2. Identify the sheep </Typography>
+           <Typography>3. Double click on the sheep placed in the image </Typography>
            {enableuser == "1" ? <><Button  variant="outlined" onClick={this.dashboard}>dashboard</Button><br/></> : "" }
            <br/>
            </div>
