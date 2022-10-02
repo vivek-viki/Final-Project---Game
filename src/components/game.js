@@ -4,14 +4,26 @@ import Image from '../assests/images/image_1.jpg';
 
 class Game extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.state = {
+            count : 0
+        }
+    }
+
+    count = (e) => {
+        // debugger;
+        let count =this.state.count + 1;
+        console.log(count);
+        this.setState({
+            count : count
+        })
     }
 
     render(){
         return(
             <>
             <Card sx={{  justifyContent: 'center', marginRight:'3%', marginLeft:'3%', marginTop : '8%', height : '440px' }}>
-            <img src={Image} height='100%' width="100%"></img>
+            <img src={Image} height='100%' width="100%" onDoubleClick={this.count}></img>
             </Card>
             </>
         )

@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
 
         return(
             <>
-            <Card sx={{  justifyContent: 'center',  width: '50%', marginLeft:'25%', marginTop : '20%' }}>
+            <Card sx={{  justifyContent: 'center',  width: '50%', marginLeft:'25%', marginTop : '20%' }} className="background_img">
                 <div className='row'>
                    <Button variant="contained" onClick={this.startgame}>Start Game</Button>
                    <div className='col-md-1'></div><br/>

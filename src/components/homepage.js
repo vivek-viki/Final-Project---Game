@@ -18,10 +18,12 @@ class Homepage extends React.Component {
         let enableuser = localStorage.getItem("enableuser");
         return(
             <>
-            <Card sx={{  justifyContent: 'center',  width: '50%', marginLeft:'25%', marginTop : '15%' }}>
+            <Card sx={{  justifyContent: 'center',  width: '50%', marginLeft:'25%', marginTop : '15%' }} className="background_img">
             <div style={{textAlign: 'center'}}>
             <Typography sx={{fontSize : '30px'}}>About Game</Typography>
+            <br/>
            <Typography>Lion to Sheep hunting game in limited time</Typography>
+           <br/>
            <Typography>1. sheep will be placed in the image</Typography>
            <Typography>2. identify the sheep </Typography>
            <Typography>3. place mouse pointer at the image </Typography>

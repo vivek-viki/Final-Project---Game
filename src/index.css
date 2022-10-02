@@ -5,10 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url("assests/images/background.jpg"); */
+  background-image: url("assests/images/background_img.jpg");
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.background_img {
+  background-image: url("assests/images/background.jpg");
 }
