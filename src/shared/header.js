@@ -22,8 +22,10 @@ class Header extends React.Component {
         return (
             <>
                 <div className="header row">
-                    <div className="col-md-6"  >
+                    <div className="col-md-6" style={{display:'flex'}} >
                         <img className='img' src={logo} alt="cannot load logo" onClick={this.homepage} style={{}} />
+                        <div className='col-md-1'></div>
+                        <span style={{marginTop:'5%', color:'white', fontSize:'30px'}}>Lion To Sheep Hunting</span>
                     </div>
 
                     <div className="col-md-6"  >
