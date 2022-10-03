@@ -89,6 +89,7 @@ class Game extends React.Component{
                   
                     if(count == 10)
                     {
+                      alert("game over");
                         setTimeout(() => {
                             this.props.navigate("/dashboard");
                           }, 2000);
