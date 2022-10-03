@@ -76,10 +76,10 @@ class Game extends React.Component{
    
   }
   componentDidUpdate(){
-    // if(this.state.time.s == 0)
-    // {
-    //     this.props.navigate("/dashboard");
-    // }
+    if(this.state.time.s == 0)
+    {
+        this.props.navigate("/dashboard");
+    }
   }
 
   mousePointer = () => {
@@ -114,9 +114,6 @@ class Game extends React.Component{
     }
   }
 
-  // exit = () => {
-  //   this.props.navigate("/dashboard");
-  // }
 
     countscore = (key, value) => {
         debugger;
@@ -189,21 +186,7 @@ class Game extends React.Component{
                        <br/>
         
         <audio id="audio" src={Audio}></audio>
-                {/* <span  onClick={this.count}><img src={Sheep1} width="20%" height="30%"></img></span>
-                <span  onClick={this.count}><img src={Sheep1} width="20%" height="30%"></img></span>
-                <span  onClick={this.count}><img src={Sheep1} width="20%" height="30%"></img></span>
-                <span  onClick={this.exit}><img src={Goat_1} width="20%" height="20%"></img></span>
-                <span  onClick={this.count}><img src={Sheep1} width="20%" height="30%"></img></span>
-                <span  onClick={this.count}><img src={Sheep2} width="20%" height="30%"></img></span>
-                <span  onClick={this.count}><img src={Sheep2} width="20%" height="30%"></img></span>
-                <span  onClick={this.exit}><img src={Goat_2} width="20%" height="30%"></img></span>
-                <span  onClick={this.count}><img src={Sheep2} width="20%" height="30%"></img></span>
-                <span  onClick={this.count}><img src={Sheep2} width="20%" height="30%"></img></span>
-                <span  onClick={this.count}><img src={Sheep3} width="20%" height="30%"></img></span>
-                <span  onClick={this.exit}><img src={Goat_1} width="20%" height="30%"></img></span>
-                <span  onClick={this.count}><img src={Sheep3} width="20%" height="30%"></img></span>
-                <span  onClick={this.count}><img src={Sheep3} width="20%" height="30%"></img></span>
-                <span  onClick={this.exit}><img src={Goat_2} width="20%" height="30%"></img></span> */}
+             
        
              </Card>
             </>
