@@ -45,3 +45,10 @@ code {
 .css-1ptx2yq-MuiInputBase-root-MuiInput-root{
   font-family: inherit !important;
 }
+
+
+#popup {
+  position: fixed;
+
+  display: none;
+}
