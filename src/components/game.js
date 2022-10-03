@@ -13,6 +13,8 @@ import Goat_1 from '../assests/images/goat.jpg';
 import Sheep2 from '../assests/images/sheep_2.jpg';
 import Sheep3 from '../assests/images/sheep_3.jpg';
 import Goat_2 from "../assests/images/goat_2.jpg";
+import Correct from "../assests/images/correct.jpg";
+import Cancel from "../assests/images/cancel.jpg";
 
 class Game extends React.Component{
     constructor(props){
@@ -84,20 +86,20 @@ class Game extends React.Component{
 
   mousePointer = () => {
 
-    const el = (sel, par) => (par||document).querySelector(sel);
+    // const el = (sel, par) => (par||document).querySelector(sel);
 
-    const elArea  = el("#area");
-    const elPopup = el("#popup");
+    // const elArea  = el("#area");
+    // const elPopup = el("#popup");
     
-    const showPopup = (evt) => {
-      Object.assign(elPopup.style, {
-        left: `${evt.clientX}px`,
-        top: `${evt.clientY}px`,
-        display: `block`,
-      });
-    };
+    // const showPopup = (evt) => {
+    //   Object.assign(elPopup.style, {
+    //     left: `${evt.clientX}px`,
+    //     top: `${evt.clientY}px`,
+    //     display: `block`,
+    //   });
+    // };
     
-    elArea.addEventListener("click", showPopup);
+    // elArea.addEventListener("click", showPopup);
   }
 
   countDown() {
@@ -120,15 +122,31 @@ class Game extends React.Component{
         const array = [3,7,10,11,14];
         if(array.includes(key))
         {
-          this.props.navigate("/dashboard");
+          var replace_image =  this.state.image_array.map((item) => {
+            if (item.key == key) {
+                 item.value = Cancel
         }
+        return item})
+        this.setState({image_array : replace_image});
+        setTimeout(() => {
+          this.props.navigate("/dashboard");
+        }, 2000);
+        }
+        else
+        {
         var audio = document.getElementById("audio");
         audio.play();
        let count =this.state.count + 1;
-      var remove_image =  this.state.image_array.filter(image => {
-                            return image.key != key
-                        })
-        this.setState({image_array : remove_image})
+       var replace_image =  this.state.image_array.map((item) => {
+               if (item.key == key) {
+                    item.value = Correct
+        }
+      return item})
+          this.setState({image_array : replace_image})
+      // var remove_image =  this.state.image_array.filter(image => {
+      //                       return image.key != key
+      //                   })
+      //   this.setState({image_array : remove_image})
         if(count == (15 - array.length))
         {
             axios.post(URL.Endpoints.ADD_SCORE,{
@@ -155,10 +173,12 @@ class Game extends React.Component{
                 )
         
     }
+  
         this.setState({
             count : count
         })
     }
+  }
 
     render(){
  
@@ -178,8 +198,8 @@ class Game extends React.Component{
                   return(
                     <>
                  <span id="area"><img src={image.value}  height='30%' width="20%" onClick={(event) => this.countscore(image.key, image.value)}></img></span>
-                   <div id="popup"><img src={Pointer} width="20px" height="20px" style={{borderRadius : '40px'}}/> 
-                   </div> 
+                   {/* <div id="popup"><img src={Pointer} width="20px" height="20px" style={{borderRadius : '40px'}}/> 
+                   </div>  */}
                    </>
                   )
               })}
