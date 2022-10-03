@@ -185,7 +185,7 @@ class Game extends React.Component{
         return(
             <>
             <p style={{color:'antiquewhite', marginTop:'5%', fontSize:'30px', fontFamily : 'inherit' , textAlign : 'center'}}>  {this.state.time.s}</p>
-            <Card sx={{  justifyContent: 'center', marginRight:'3%', marginLeft:'3%', height : '390px' }}> 
+            <Card sx={{  justifyContent: 'center', marginRight:'3%', marginLeft:'3%', height : '390px', cursor : 'pointer' }}> 
             {/* <img src={Sheep1} onClick={this.count} height='100%' width="50%" ></img>
             <img src={Sheep1} onClick={this.count} height='100%' width="100%" ></img> */}
                 {/* {this.state.images.map((image) => {
@@ -197,7 +197,7 @@ class Game extends React.Component{
               {this.state.image_array.map((image) => {
                   return(
                     <>
-                 <span id="area"><img src={image.value}  height='30%' width="20%" onClick={(event) => this.countscore(image.key, image.value)}></img></span>
+                 <span id="area" ><img src={image.value}   height='30%' width="20%" onClick={(event) => this.countscore(image.key, image.value)}></img></span>
                    {/* <div id="popup"><img src={Pointer} width="20px" height="20px" style={{borderRadius : '40px'}}/> 
                    </div>  */}
                    </>
