@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: cursive;
+  font-family: 'Press Start 2P', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("assests/images/background_img.jpg");
@@ -51,4 +51,168 @@ code {
   position: fixed;
 
   display: none;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.card{
+    background: url("../src/assests/images/game_background.jpg");
+    /* background-position:fixed; */
+    width: 100%;
+    height: 100%;
+    background-image: center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    font-family: 'Press Start 2P', cursive;
+}
+img{
+    height: 100%;
+    width: 100%;
+}
+.main-page{
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    transition: all 0.5s ease-in;
+}
+.head-img img{
+    width: 50%;
+    height: 30vh;
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.game-text{
+    display: block;
+    font-family: 'Press Start 2P', outline;
+    font-size:1.3rem;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #000000;
+    letter-spacing: .05em;
+    text-shadow:  
+      3px 3px 0px rgb(255, 255, 255),
+      5.5px 5.5px 0px rgb(255, 0, 0);
+}
+.play_game{
+    position: fixed;
+    display: inline-block;
+    background: black;
+    padding:20px;
+    color: #ffffff;
+    text-shadow:  
+      2px 2px 0px rgb(0, 0, 0),
+      3.50px 3.5px 0px rgb(255, 0, 0);
+    font-size: 1.3rem;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+}
+.play_game:active{
+    font-size:1rem;
+}
+.cursor{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height:50px;
+    width:50px;
+    z-index: 1;
+    pointer-events: none;
+}
+.target{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height:120px;
+    width:120px;
+    z-index: 0;
+    border-radius: 50%;
+}
+.score{
+    position: fixed;
+    top: "5%";
+    left: 5px;
+    font-size: 3rem;
+    color: rgba(21, 255, 0, 0.863);
+}
+.timer{
+    position: fixed;
+    top: '5%';
+    right: 5px;
+    font-size: 3rem;
+    color: rgba(21, 255, 0, 0.863);
+}
+.highscore{
+    position: fixed;
+    bottom: 55px;
+    right: 5px;
+    font-size: 1.8rem;
+    color: rgba(21, 255, 0, 0.863);
+}
+
+/*new css */
+/*** CSS debug in progress ***/
+
+/*Make any img element responsive*/
+img {
+  max-width:100%;
+}
+/*Set a fixed size for width and height and in an absolute position*/
+  
+/*Style for the Score container*/
+.scoreContainer{
+  background-color: black;
+  width: 15%;
+  height:15%;
+  color:#FFFFFF;
+  top:15%;
+  right:5%;
+  border: 2px solid greenyellow;
+  border-radius: 10px;
+  display:flex;
+  position:fixed;
+  flex-direction:column;
+  align-items:center;
+
+}
+
+#duck{
+  margin:50px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 26%;
+  top: 50%;
+  
+}
+
+#score-text{
+  font-size:1.5em;  
+}
+#score-counter{
+  font-size:3.1em;  
+  font-weight:bold;
+  color:#06E515;
+}
+
+#lion {
+  margin:0px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 850px;
+  top: 60%;
 }

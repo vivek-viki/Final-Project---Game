@@ -120,7 +120,7 @@ class Login extends React.Component {
             <Button  sx={{marginLeft:'21%', fontFamily : 'inherit'}} onClick={(e) => {
                                                         this.props.navigate("/changepassword");
                                                         }}>
-                 {'Forgot Password'}
+                 {'Change Password'}
             </Button>
             
             <div>
