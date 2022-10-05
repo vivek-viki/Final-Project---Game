@@ -13,6 +13,7 @@ import Lion from "../assests/images/lion.png";
 import Sheep1 from "../assests/images/sheep1.gif";
 import Sheep2 from "../assests/images/sheep2.gif";
 import Grass from "../assests/images/grass.gif";
+import Gameover from "../assests/audio/gameover.mp3";
 
 class Game extends React.Component{
     constructor(props){
@@ -85,10 +86,13 @@ class Game extends React.Component{
         {
             // this.props.snackbarShowMessage(`Your score is ` + localStorage.getItem("score") , `success`);
             localStorage.removeItem("score");
-              // alert("yours score " + score.innerHTML);
-                setTimeout(() => {
-                    this.props.navigate("/dashboard");
-                  }, 2000);
+            const gameover = document.querySelector('#gameover');
+            const theme = document.querySelector('#theme');
+            theme.pause();
+            gameover.play();
+              alert("Game Over");
+              this.props.navigate("/dashboard");
+
             })
       // this.props.navigate("/dashboard");
   }
@@ -234,6 +238,7 @@ function removesheep6()
       <div id="score-counter">0</div>
     </div>
     <audio src={Theme} id="theme"></audio>
+    <audio src={Gameover} id="gameover"></audio>
   {/* </div> */}
        
              </Card>
