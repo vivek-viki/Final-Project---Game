@@ -179,7 +179,7 @@ img {
   height:15%;
   color:#FFFFFF;
   top:15%;
-  right:5%;
+  right:0%;
   border: 2px solid greenyellow;
   border-radius: 10px;
   display:flex;
@@ -193,10 +193,101 @@ img {
   margin:50px;
   width: 100px;
   height: 100px;
-  position: absolute;
+  position: fixed;
   left: 26%;
   top: 50%;
   
+}
+
+#sheep1{
+  margin:50px;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  /* left: 75%; */
+  top: 50%;
+  animation: moveImage 30s reverse ;
+  right: 1000px;
+}
+
+@keyframes moveImage {
+  100% {
+    transform: translateX(calc(85vw +  50px));
+  }
+}
+
+#sheep2{
+  margin:50px;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 70%;
+  top: 60%;
+  
+}
+
+#sheep3{
+  margin:50px;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 50%;
+  top: 70%;
+  
+}
+
+#sheep6{
+  margin:50px;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 30%;
+  top: 70%;
+  
+}
+
+#sheep5{
+  margin:50px;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 10%;
+  top: 60%;
+  
+}
+#grass{
+  margin:50px;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 5%;
+  top: 60%;
+}
+
+#grass1{
+  margin:50px;
+  width: 100px;
+  height: 70px;
+  position: fixed;
+  left: 60%;
+  top: 60%;
+}
+
+#sheep4{
+  margin:50px;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 40%;
+  top: 70%;
+  animation: moveSheep 30s reverse ;
+  right: 100px;
+}
+
+@keyframes moveSheep {
+  100% {
+    transform: translateX(calc(50vw +  50px));
+  }
 }
 
 #score-text{
@@ -213,7 +304,7 @@ img {
   width: 100px;
   height: 100px;
   position: absolute;
-  left: 850px;
+  left: 10px;
   top: 60%;
 }
 
@@ -241,4 +332,14 @@ img {
   flex-direction:column;
   align-items:center;
 
+}
+
+.mouse {
+  cursor: url("./assests/images/cursor.gif"), auto;
+  width: 20px;
+  height: 50px;
+}
+
+.css-1iox90y-MuiPaper-root-MuiCard-root{
+  width: 100%;
 }

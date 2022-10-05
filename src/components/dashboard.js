@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount(){
-    
+        // localStorage.setItem("score", 0);
         axios.post(URL.Endpoints.GET_SCORE,{
             userid : localStorage.getItem("userid")
         }

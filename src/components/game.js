@@ -7,17 +7,20 @@ import URL from '../url.json';
 import { withSnackbar } from '../shared/snackbar';
 import { useNavigate } from 'react-router-dom';
 import Theme from "../assests/audio/theme.mp3";
-import Game_Backgroung from "../assests/images/game_background.jpg";
+import Game_Background from "../assests/images/game_background.jpg";
 import Sheep from "../assests/images/sheep.png";
 import Lion from "../assests/images/lion.png";
+import Sheep1 from "../assests/images/sheep1.gif";
+import Sheep2 from "../assests/images/sheep2.gif";
+import Grass from "../assests/images/grass.gif";
 
 class Game extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             time: {}, 
-            seconds: 20,
-            initalTimer: 20,
+            seconds: 15,
+            initalTimer: 15,
             count : 0
             // images : [{image_1 : Image1 , count : 1}],
             // images_second : [{image_1 : Image2, count : 10}]
@@ -70,7 +73,6 @@ class Game extends React.Component{
     // let timeLeftVar = this.secondsToTime(this.state.seconds);
     // this.setState({ time: timeLeftVar });
     // this.startTimer();
-    // this.mousePointer();
    
   }
   componentDidUpdate(){
@@ -81,34 +83,17 @@ class Game extends React.Component{
         score : localStorage.getItem("score")
     }).then(data =>
         {
-            this.props.snackbarShowMessage(`Your score is ` + localStorage.getItem("score") , `success`);
+            // this.props.snackbarShowMessage(`Your score is ` + localStorage.getItem("score") , `success`);
+            localStorage.removeItem("score");
               // alert("yours score " + score.innerHTML);
                 setTimeout(() => {
                     this.props.navigate("/dashboard");
                   }, 2000);
             })
       // this.props.navigate("/dashboard");
-     
-    }
+  }
   }
 
-  mousePointer = () => {
-
-    // const el = (sel, par) => (par||document).querySelector(sel);
-
-    // const elArea  = el("#area");
-    // const elPopup = el("#popup");
-    
-    // const showPopup = (evt) => {
-    //   Object.assign(elPopup.style, {
-    //     left: `${evt.clientX}px`,
-    //     top: `${evt.clientY}px`,
-    //     display: `block`,
-    //   });
-    // };
-    
-    // elArea.addEventListener("click", showPopup);
-  }
 
   countDown() {
     // Remove one second, set state so a re-render happens.
@@ -128,20 +113,69 @@ startGame = () => {
   debugger;
   const theme  = document.querySelector("#theme");
   theme.currentTime = 0;
-  // theme.play();
+  theme.play();
   const duck = document.querySelector('#lion');
   const sheep = document.querySelector('#duck');
   const score = document.querySelector('#score-counter');
-  const time = document.querySelector('#time-counter');
+  const sheep1 = document.querySelector('#sheep1');
+  const sheep2 = document.querySelector('#sheep2');
+  const sheep3 = document.querySelector('#sheep3');
+  const sheep4 = document.querySelector('#sheep4');
+  const sheep5 = document.querySelector('#sheep5');
+  const sheep6 = document.querySelector('#sheep6');
     var moving = false;
     this.startTimer();
    
-  duck.addEventListener('click', 
-    initialClick, false
-  );
-  // duck.addEventListener("mousemove", initialClick, false);
-//  sheep.addEventListener("mousemove", initialClick, false);
+  sheep.addEventListener("click" ,removesheep);
+  sheep1.addEventListener("click" , removesheep1);
+  sheep2.addEventListener("click" , removesheep2);
+  sheep3.addEventListener("click" , removesheep3);
+  sheep4.addEventListener("click" , removesheep4);
+  sheep5.addEventListener("click" , removesheep5);
+  sheep6.addEventListener("click" , removesheep6);
 
+function removesheep()
+{
+  sheep.removeEventListener("click", sheep.remove());
+  score.innerHTML = parseInt(score.innerHTML) + 1;
+  localStorage.setItem("score", score.innerHTML);
+}
+function removesheep1()
+{
+  sheep1.removeEventListener("click", sheep1.remove());
+  score.innerHTML = parseInt(score.innerHTML) + 1;
+  localStorage.setItem("score", score.innerHTML);
+}
+function removesheep2()
+{
+  sheep2.removeEventListener("click", sheep2.remove());
+  score.innerHTML = parseInt(score.innerHTML) + 1;
+  localStorage.setItem("score", score.innerHTML);
+}
+function removesheep3()
+{
+  sheep3.removeEventListener("click", sheep3.remove());
+  score.innerHTML = parseInt(score.innerHTML) + 1;
+  localStorage.setItem("score", score.innerHTML);
+}
+function removesheep4()
+{
+  sheep4.removeEventListener("click", sheep4.remove());
+  score.innerHTML = parseInt(score.innerHTML) + 1;
+  localStorage.setItem("score", score.innerHTML);
+}
+function removesheep5()
+{
+  sheep5.removeEventListener("click", sheep5.remove());
+  score.innerHTML = parseInt(score.innerHTML) + 1;
+  localStorage.setItem("score", score.innerHTML);
+}
+function removesheep6()
+{
+  sheep6.removeEventListener("click", sheep6.remove());
+  score.innerHTML = parseInt(score.innerHTML) + 1;
+  localStorage.setItem("score", score.innerHTML);
+}
   function move(e){
 
   var newX = e.clientX - 10;
@@ -149,203 +183,18 @@ startGame = () => {
 
   duck.style.left = newX + "px";
   duck.style.top = newY + "px";
-
-  // sheep.remove();
-//   if(sheep.style.left == duck.style.left)
-//  // duck.addEventListener('mouseover', sheep.remove());
-//   // sheep.innerHTML = "+1";
-//    sheep.remove();
-
   
 }
-    // const post = () => {
-    //   debugger;
-  
-    // }
-function initialClick(e) {
-
-  if(moving){
-   // document.addEventListener("mousemove", sheep.remove());
-    document.removeEventListener("mousemove", move, sheep.remove());
-    score.innerHTML = parseInt(score.innerHTML) + 1;
-    localStorage.setItem("score", score.innerHTML);
-    moving = !moving;
-    return;
-  }
-  
-  moving = !moving;
-
-  document.addEventListener("mousemove", move, false);
 
 }
-}
-
-  // startgame = () =>{
-  //   debugger;
-  //   const cross = document.querySelector('.cursor');
-  //   const target = document.querySelector('.target');
-  //   const scoreText = document.querySelector('.score');
-  //   const timerText = document.querySelector('.timer');
-  //   const highscoreText = document.querySelector('.highscore');
-  //   const gunshot = document.querySelector('.gunshot');
-  //   const gameover = document.querySelector('.gameover');
-  //   const menupage = document.querySelector('.main-page');
-  //   const playGame = document.querySelector('.play_game');
-  //   const themeSong = document.querySelector('.theme');
-
-  //   var score = 0;
-  //   var timerLeft = 15;
-  //   // var highscore = 0;
-  //   const changePosition = ()=>{
-  //     const xAxis = Math.floor(Math.random()* 1880);
-  //     const yAxis = Math.floor(Math.random()* 577);
-  //     target.style.top = `${yAxis}px`;
-  //     target.style.left = `${xAxis}px`
-  // };
-  //   // if(localStorage.getItem('highscore')){
-  //   //   highscore = localStorage.getItem('highscore');
-  //   //   highscoreText.innerHTML = `Highscore ${highscore}`;
-  //   //   }
-  //     themeSong.currentTime = 0;
-  //     // themeSong.play();
-      
-  //     scoreText.innerHTML = score;
-  //     timerText.innerHTML = timerLeft;
-  //     changePosition();
-
-  //     menupage.addEventListener('click', (e) => e.stopPropagation());
-
-  //     const fadePage = ()=>{
-  //       themeSong.pause();
-  //       menupage.style.opacity = 0;
-  //       setTimeout(()=>{
-  //           menupage.style.display = "none";
-  //       },500);
-  //       play();
-  //   }
-  //   const play = ()=>{
-  //     themeSong.pause();
-  //       setInterval(()=>{
-  //           timer()
-  //       },1000);
-  //   }
-  //   const gameOver = ()=>{
-  //       alert(`Game Over \n Your Score = ${score}`);
-  //       // if(+localStorage.getItem('highScore') < score){
-  //       //     localStorage.setItem('highscore', score);
-  //       //     highscore = score;
-  //       //     highscoreText.innerHTML = `Highscore ${highscore}`;
-  //       // }
-  //       var score = 0;
-  //       var timeLeft = 15+2;
-  //       scoreText.innerHTML = score;
-  //       timerText.innerHTML = timeLeft;
-  //   }
-  //   const timer = ()=>{
-  //       if(timerLeft === 0){
-  //           gameover.play();
-  //           gameOver();
-  //           timerLeft = 15+2;
-  //       }
-  //       timerLeft -= 1;
-  //       timerText.innerHTML = timerLeft;
-  //   }
-    
-  //   document.addEventListener('mousemove',(e)=>{
-  //       cross.style.left = `${e.clientX}px`;
-  //       cross.style.top = `${e.clientY}px`;
-  //   });
-    
-
-    
-  //   const scoreIncrease = ()=>{
-  //       gunshot.currentTime = 0;
-  //       gunshot.play();
-  //       score += 1;
-  //       scoreText.innerHTML = score;
-  //       changePosition();
-  //   }
-    
-  //   target.addEventListener('click', scoreIncrease);
-  //   playGame.addEventListener('click', fadePage);
-    
-  // }
-
-  //   countscore = (key, value) => {
-  //       debugger;
-  //       const array = [3,7,10,11,14];
-  //       if(array.includes(key))
-  //       {
-  //         var replace_image =  this.state.image_array.map((item) => {
-  //           if (item.key == key) {
-  //                item.value = Cancel
-  //       }
-  //       return item})
-  //       this.setState({image_array : replace_image});
-  //       setTimeout(() => {
-  //         this.props.navigate("/dashboard");
-  //       }, 2000);
-  //       }
-  //       else
-  //       {
-  //       var audio = document.getElementById("audio");
-  //       audio.play();
-  //      let count =this.state.count + 1;
-  //      var replace_image =  this.state.image_array.map((item) => {
-  //              if (item.key == key) {
-  //                   item.value = Correct
-  //       }
-  //     return item})
-  //         this.setState({image_array : replace_image})
-  //     // var remove_image =  this.state.image_array.filter(image => {
-  //     //                       return image.key != key
-  //     //                   })
-  //     //   this.setState({image_array : remove_image})
-  //       if(count == (15 - array.length))
-  //       {
-  //           axios.post(URL.Endpoints.ADD_SCORE,{
-  //               userid : localStorage.getItem("userid"),
-  //               score : count
-  //           }).then(data =>
-  //               {
-  //                   this.props.snackbarShowMessage(`Your score is ` + count , `success`);
-  //                   this.state.images.filter(image => {
-  //                       return image.image_1
-  //                   })
-  //                   this.startTimer();
-                  
-  //                   if(count == 10)
-  //                   {
-  //                     alert("game over");
-  //                       setTimeout(() => {
-  //                           this.props.navigate("/dashboard");
-  //                         }, 2000);
-  //                   }
-  //                   this.setState({images : this.state.images_second, count : 0})
-                 
-  //               }
-  //               )
-        
-  //   }
-  
-  //       this.setState({
-  //           count : count
-  //       })
-  //   }
-  // }
-
-
-// startGame = () => {
-  
-
-// }
 
     render(){
  
         return(
             <>
             {/* <p style={{color:'antiquewhite', marginTop:'5%', fontSize:'30px', fontFamily : 'inherit' , textAlign : 'center'}}>  {this.state.time.s}</p> */}
-            <Card sx={{  justifyContent: 'center', marginTop : '5.5%', height : '455px'}} > 
+    
+            <Card sx={{  justifyContent: 'center', marginTop : '5.5%', height : '455px'}}  className="mouse" onLoad={this.startGame}> 
             {/* <div className='card'> */}
             {/* <img src={Sheep1} onClick={this.count} height='100%' width="50%" ></img>
             <img src={Sheep1} onClick={this.count} height='100%' width="100%" ></img> */}
@@ -364,41 +213,18 @@ function initialClick(e) {
                    {/* </>
                   )
               })} */}
-                 {/* <main class="main-page">
-        <div class="head-img">
-            <img src={Main_Image} alt="gun-and-target-image"/>
-        </div>
-        <div class="game-text">
-            <h1>AIM SHOOTER</h1>
-        </div>
-        <div class="play_game">
-            <p>PLAY</p>
-        </div>
-    </main>
-    <audio src={GameShot} class="gunshot"></audio>
-    <audio src={GameOver} class="gameover"></audio>
-    <audio src={Theme} class="theme"></audio>
-    <div class="cursor">
-        <img src={Crosshair} alt="crosshair" draggable="false"/>
-    </div>
-    <div class="target">
-        <img src={Target} alt="target"/>
-    </div>
-    <div class="score">
-    </div>
-    <div class="timer">
-    </div> */}
-    {/* <div class="highscore">
-        HighScore 0
-    </div> */}
-    {/* </div>           */}
-      {/* <br/>
-        
-        <audio id="audio" src={Audio}></audio> */}
-           {/* <div class="container"> */}
-    <img src="https://bit.ly/2Q4q14a"></img>
+              
+    <img src={Game_Background} style={{width : "100%"}} width = "1000px"></img>
     <img  id='duck' src={Sheep} ></img>
-    <img  id='lion' src={Lion} onLoad={this.startGame}></img>
+    <img  id='sheep1' src={Sheep1} onClick={this.sheepclick}></img>
+    <img  id='sheep2' src={Sheep2} ></img>
+    <img  id='sheep3' src={Sheep2} ></img>
+    <img  id='sheep5' src={Sheep2} ></img>
+    <img  id='sheep6' src={Sheep2} ></img>
+    <img  id='sheep4' src={Sheep1} ></img>
+    <img id="grass" src={Grass}></img>
+    <img id="grass1" src={Grass}></img>
+    {/* <img  id='lion' src={Lion} ></img> */}
     <div  class='Timecontainer'>
       <div id="time-text">Time</div>
       <div id="time-counter"> {this.state.time.s}</div>
