@@ -6,18 +6,8 @@ import Image1 from '../assests/images/image_1.jpg';
 import URL from '../url.json';
 import { withSnackbar } from '../shared/snackbar';
 import { useNavigate } from 'react-router-dom';
-import GameOver from "../assests/audio/gameover.mp3";
-import GameShot from "../assests/audio/gameover.mp3";
 import Theme from "../assests/audio/theme.mp3";
-import Crosshair from "../assests/images/crosshair.png";
 import Game_Backgroung from "../assests/images/game_background.jpg";
-import Target from "../assests/images/target.png"; 
-import Main_Image from "../assests/images/main-img.png";
-import Pointer from '../assests/images/pointer.jpg';
-import Audio from '../assests/audio/lionroar.mp3';
-import Sheep1 from '../assests/images/sheep_1.jpg';
-import Correct from "../assests/images/correct.jpg";
-import Cancel from "../assests/images/cancel.jpg";
 import Sheep from "../assests/images/sheep.png";
 import Lion from "../assests/images/lion.png";
 
@@ -84,10 +74,22 @@ class Game extends React.Component{
    
   }
   componentDidUpdate(){
-    // if(this.state.time.s == 0)
-    // {
-    //     this.props.navigate("/dashboard");
-    // }
+    if(this.state.time.s == 0)
+    {
+      axios.post(URL.Endpoints.ADD_SCORE,{
+        userid : localStorage.getItem("userid"),
+        score : localStorage.getItem("score")
+    }).then(data =>
+        {
+            this.props.snackbarShowMessage(`Your score is ` + localStorage.getItem("score") , `success`);
+              // alert("yours score " + score.innerHTML);
+                setTimeout(() => {
+                    this.props.navigate("/dashboard");
+                  }, 2000);
+            })
+      // this.props.navigate("/dashboard");
+     
+    }
   }
 
   mousePointer = () => {
@@ -130,10 +132,13 @@ startGame = () => {
   const duck = document.querySelector('#lion');
   const sheep = document.querySelector('#duck');
   const score = document.querySelector('#score-counter');
-  var moving = false;
-duck.addEventListener('click', 
-  initialClick, false
-);
+  const time = document.querySelector('#time-counter');
+    var moving = false;
+    this.startTimer();
+   
+  duck.addEventListener('click', 
+    initialClick, false
+  );
   // duck.addEventListener("mousemove", initialClick, false);
 //  sheep.addEventListener("mousemove", initialClick, false);
 
@@ -144,22 +149,26 @@ duck.addEventListener('click',
 
   duck.style.left = newX + "px";
   duck.style.top = newY + "px";
+
   // sheep.remove();
 //   if(sheep.style.left == duck.style.left)
 //  // duck.addEventListener('mouseover', sheep.remove());
 //   // sheep.innerHTML = "+1";
 //    sheep.remove();
 
-
   
 }
-
+    // const post = () => {
+    //   debugger;
+  
+    // }
 function initialClick(e) {
 
   if(moving){
    // document.addEventListener("mousemove", sheep.remove());
     document.removeEventListener("mousemove", move, sheep.remove());
     score.innerHTML = parseInt(score.innerHTML) + 1;
+    localStorage.setItem("score", score.innerHTML);
     moving = !moving;
     return;
   }
@@ -168,45 +177,6 @@ function initialClick(e) {
 
   document.addEventListener("mousemove", move, false);
 
-}
-  // duck.addEventListener('mousemove',(e)=>{
-  //   const w = window.innerWidth;
-  // const h = window.innerHeight; 
-  //   duck.style.top = getRandomNum(w) + 'px';
-  //   duck.style.left = getRandomNum(h) + 'px';
-  //     });
-//Add click event
-// duck.addEventListener('click', ()=> {
-//   increaseScore();
-//   moveDuck();
-// });
-
-//Increase score by 1
-const increaseScore = () => {
-  //Get the content of the target element. The current value for score
-  const score = document.querySelector("#score-counter").innerHTML;
-  //Get the element to increase the value
-  const scoreHTML = document.querySelector("#score-counter");
-  //Cast the score value to Number
-  let count = Number(score);
-  //Set the new score to the target element
-  scoreHTML.innerHTML = count + 1;
-};
-
-//Get a Random number
-const getRandomNum = (num) => {
-  return Math.floor(Math.random() * Math.floor(num));
-}
-/*
-Move the duck randomly 
-*/
-const moveDuck = () => {
-  debugger;
-  const w = window.innerWidth;
-  const h = window.innerHeight;  
-  duck.style.top = getRandomNum(w) + 'px';
-  duck.style.left = getRandomNum(h) + 'px';
-   
 }
 }
 
@@ -429,6 +399,10 @@ const moveDuck = () => {
     <img src="https://bit.ly/2Q4q14a"></img>
     <img  id='duck' src={Sheep} ></img>
     <img  id='lion' src={Lion} onLoad={this.startGame}></img>
+    <div  class='Timecontainer'>
+      <div id="time-text">Time</div>
+      <div id="time-counter"> {this.state.time.s}</div>
+    </div>
     <div  class='scoreContainer'>
       <div id="score-text">Score</div>
       <div id="score-counter">0</div>

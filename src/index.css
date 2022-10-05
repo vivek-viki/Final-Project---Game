@@ -216,3 +216,29 @@ img {
   left: 850px;
   top: 60%;
 }
+
+#time-text{
+  font-size:1.2em;  
+  margin-top: 5%;
+}
+#time-counter{
+  font-size:2.5em;  
+  font-weight:bold;
+  color:#06E515;
+}
+
+.Timecontainer{
+  background-color: black;
+  width: 15%;
+  height:15%;
+  color:#FFFFFF;
+  top:15%;
+  /* right:5%; */
+  border: 2px solid greenyellow;
+  border-radius: 10px;
+  display:flex;
+  position:fixed;
+  flex-direction:column;
+  align-items:center;
+
+}
