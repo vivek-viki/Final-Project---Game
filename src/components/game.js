@@ -141,7 +141,7 @@ startGame = () => {
 function removesheep()
 {
   sheep.removeEventListener("click", sheep.remove());
-  score.innerHTML = parseInt(score.innerHTML) + 1;
+  score.innerHTML = parseInt(score.innerHTML) + 2;
   localStorage.setItem("score", score.innerHTML);
 }
 function removesheep1()

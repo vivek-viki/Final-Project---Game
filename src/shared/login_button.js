@@ -32,11 +32,13 @@ class Login_Button extends React.Component {
 
         }
 
-    logout = () => {
+    logout = (e) => {
         localStorage.setItem("enableuser", 0);
         localStorage.setItem("userid", ""); 
         localStorage.setItem("payment" , 0);
         this.props.navigate("/");
+        e.preventDefault();
+        window.location.reload(true);
         this.setState({enableuser : true})
     }
 
