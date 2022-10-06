@@ -16,7 +16,7 @@ class Login_Button extends React.Component {
 
     componentDidMount(){
        let enableuser =  localStorage.getItem("enableuser")
-       if(enableuser == "1")
+       if(enableuser == 1)
        {
         this.setState({enableuser : false})
        }
@@ -73,9 +73,9 @@ class Login_Button extends React.Component {
                 >
                 {userid}
                  </Chip>
-                <div className='col-md-1'></div>
+               &nbsp;
                 </> : ""}
-                 <Button hidden={this.state.enableuser } variant="contained" onClick={this.logout} >Logout</Button>
+                 <Button hidden={this.state.enableuser} variant="contained" onClick={this.logout} >Logout</Button>
             </div>
             </>
             );
