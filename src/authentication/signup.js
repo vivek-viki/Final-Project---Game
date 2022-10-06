@@ -118,7 +118,7 @@ class Signup extends React.Component {
     {
         return(
             <>
-            <Card sx={{  justifyContent: 'center',  width: '50%', marginLeft:'25%', marginTop : '15%' }} className="background_img">
+            <Card sx={{  justifyContent: 'center',  width: '50%', marginLeft:'25%', marginTop : '12%' }} className="background_img">
             <div style={{textAlign: 'center'}}>
             <div>
             <TextField
