@@ -5,6 +5,7 @@ import { Button } from '@mui/material';
 import axios from 'axios';
 import URL from '../url.json';
 import { withSnackbar } from '../shared/snackbar';
+import Payment from './Payment';
 
 class Signup extends React.Component {
     constructor(props){
@@ -74,7 +75,8 @@ class Signup extends React.Component {
         {
             axios.post(URL.Endpoints.ADD_USER, {
                 userid : this.state.userid,
-                password : this.state.password
+                password : this.state.password,
+                payment : localStorage.getItem("payment")
             })
             .then(data =>{
                 if(data.data.length)
@@ -84,7 +86,8 @@ class Signup extends React.Component {
                 else
                 {
                 this.props.snackbarShowMessage(`user ` + data.data.userid + ` created successfully.`, `success`);
-             this.setState({ response: data,
+                localStorage.setItem("payment", 0)
+                this.setState({ response: data,
              userid : "",
              password : "",
              confirm_password : ""
@@ -152,6 +155,8 @@ class Signup extends React.Component {
           onChange={this.setConfirmPassword}
           />
             </div>
+            <br/>
+            <Payment/>
             <br/>
             <div>
                 <Button variant="contained" sx={{width : '40%', fontFamily : 'inherit'}} onClick={this.handleSignUp}>Sign Up</Button>

@@ -26,7 +26,7 @@ class App extends React.Component {
          <Route path="/" element={<Homepage {...this.props} />}/>
                 <Route path="/Login" element={<Login  {...this.props}/>} />
                 <Route path="/Signup" element={<WithSignUp {...this.props}/>} />
-                <Route path="/changepassword" element={<ChangePassword {...this.props}/>} />
+                <Route path="/forgotpassword" element={<ChangePassword {...this.props}/>} />
                 
                 {(enableuser == "1") ? 
                 <>

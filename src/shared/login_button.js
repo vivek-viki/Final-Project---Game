@@ -35,6 +35,7 @@ class Login_Button extends React.Component {
     logout = () => {
         localStorage.setItem("enableuser", 0);
         localStorage.setItem("userid", ""); 
+        localStorage.setItem("payment" , 0);
         this.props.navigate("/");
         this.setState({enableuser : true})
     }
@@ -52,6 +53,17 @@ class Login_Button extends React.Component {
                 <Button hidden={enableuser == "1"} variant="contained" onClick={this.signup} >Signup</Button>
                 {enableuser == "1" ? <>
                 
+                    {localStorage.getItem("paiduser") > 0 ? 
+                    <>
+                    <Chip
+                    variant="outlined"
+                    color="neutral"
+                    label = "premium User"
+                     startDecorator={<Avatar size="sm" />}
+                    >premium</Chip>&nbsp;
+                    </>
+
+                 : ""}
                 <Chip
                 variant="outlined"
                 color="neutral"

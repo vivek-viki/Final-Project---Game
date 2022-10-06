@@ -15,7 +15,7 @@ class Login extends React.Component {
             password_helpertext : false,
             userid : "",
             password : "",
-            response : 0
+            response : []
         }
     }
 
@@ -52,6 +52,7 @@ class Login extends React.Component {
     }
     
     handleSubmit = () => {
+        debugger;
         if(this.state.password != "" && this.state.userid != "")
         {
             axios.post(URL.Endpoints.VERFIY_USER, {
@@ -61,8 +62,9 @@ class Login extends React.Component {
                 {
                     if(data.data.length > 0)
                     {
+                        localStorage.setItem("paiduser", data.data[0].payment);
                         localStorage.setItem("enableuser", 1);
-                        localStorage.setItem("userid", data.data[0].userid)
+                        localStorage.setItem("userid", data.data[0].userid);
                         this.props.navigate("/dashboard");
                     }
                     else
@@ -118,9 +120,9 @@ class Login extends React.Component {
             </div>
            
             <Button  sx={{marginLeft:'10%', fontFamily : 'inherit'}} onClick={(e) => {
-                                                        this.props.navigate("/changepassword");
+                                                        this.props.navigate("/forgotpassword");
                                                         }}>
-                 {'Change Password'}
+                 {'Forgot Password'}
             </Button>
             
             <div>

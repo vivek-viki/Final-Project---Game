@@ -160,7 +160,7 @@ class ChangePassword extends React.Component {
             <br/>
 
             <div>
-                <Button variant="contained" sx={{width : '40%', fontFamily : 'inherit'}} onClick={this.ChangePassword}>Change Password</Button>
+                <Button variant="contained" sx={{width : '40%', fontFamily : 'inherit'}} onClick={this.ChangePassword}>Forgot Password</Button>
             </div>
             <br/>
             </div>
