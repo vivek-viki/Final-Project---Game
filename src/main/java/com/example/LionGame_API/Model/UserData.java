@@ -11,15 +11,17 @@ public class UserData {
     private String userid;
     private String password;
 
+    private int payment;
     public  UserData()
     {
 
     }
 
-    public UserData(int ID, String userid, String password) {
+    public UserData(int ID, String userid, String password, int payment) {
         this.ID = ID;
         this.userid = userid;
         this.password = password;
+        this.payment = payment;
     }
 
     public int getID() {
@@ -44,5 +46,13 @@ public class UserData {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getPayment() {
+        return payment;
+    }
+
+    public void setPayment(int payment) {
+        this.payment = payment;
     }
 }
