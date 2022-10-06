@@ -71,7 +71,7 @@ class Signup extends React.Component {
 
     handleSignUp = () => {
 
-        if(this.state.password != "" && this.state.userid != "" && this.state.confirm_password != "" && this.state.password === this.state.confirm_password)
+        if(this.state.password != "" && this.state.userid.length <=8 && (this.state.password.length <=10 && this.state.confirm_password <=10) && this.state.userid != "" && this.state.confirm_password != "" && this.state.password === this.state.confirm_password)
         {
             axios.post(URL.Endpoints.ADD_USER, {
                 userid : this.state.userid,
@@ -95,6 +95,14 @@ class Signup extends React.Component {
         }
         else
         {
+            if(this.state.userid.length > 8)
+            {
+                this.props.snackbarShowMessage(`user id cannot be more than 8 character.`, `error`);
+            }
+            if(this.state.password.length > 10)
+            {
+                this.props.snackbarShowMessage(`password cannot be more than 8 character.`, `error`);
+            }
             if(this.state.password != this.state.confirm_password)
             {
                 this.props.snackbarShowMessage(`Password not matched.`, `error`);
