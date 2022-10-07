@@ -70,57 +70,58 @@ class Signup extends React.Component {
     }
 
     handleSignUp = () => {
-
-        if(this.state.password != "" && this.state.userid.length <=8 && (this.state.password.length <=10 && this.state.confirm_password <=10) && this.state.userid != "" && this.state.confirm_password != "" && this.state.password === this.state.confirm_password)
+debugger;
+if(this.state.password != "" && this.state.userid.length <=8  && this.state.userid != "" && this.state.confirm_password != "" && (this.state.password === this.state.confirm_password))
+{
+    axios.post(URL.Endpoints.ADD_USER, {
+        userid : this.state.userid,
+        password : this.state.password,
+        payment : localStorage.getItem("payment")
+    })
+    .then(data =>{
+        if(data.data.length)
         {
-            axios.post(URL.Endpoints.ADD_USER, {
-                userid : this.state.userid,
-                password : this.state.password,
-                payment : localStorage.getItem("payment")
-            })
-            .then(data =>{
-                if(data.data.length)
-                {
-                    this.props.snackbarShowMessage(`user ` + data.data[0].userid + ` already exists.`, `error`);
-                }
-                else
-                {
-                this.props.snackbarShowMessage(`user ` + data.data.userid + ` created successfully.`, `success`);
-                localStorage.setItem("payment", 0)
-                this.setState({ response: data,
-             userid : "",
-             password : "",
-             confirm_password : ""
-            })}});
+            this.props.snackbarShowMessage(`user ` + data.data[0].userid + ` already exists.`, `error`);
         }
         else
         {
-            if(this.state.userid.length > 8)
-            {
-                this.props.snackbarShowMessage(`user id cannot be more than 8 character.`, `error`);
-            }
-            if(this.state.password.length > 10)
-            {
-                this.props.snackbarShowMessage(`password cannot be more than 8 character.`, `error`);
-            }
-            if(this.state.password != this.state.confirm_password)
-            {
-                this.props.snackbarShowMessage(`Password not matched.`, `error`);
-            }
-            if(this.state.userid == "")
-            {
-                this.setState({userid_helpertext : true})
-            }
-            if(this.state.password == "")
-            {
-                this.setState({password_helpertext : true})
-            }
-            if(this.state.confirm_password == "")
-            {
-                this.setState({confirmPass_helpertext : true})
-            }
-           
-        }
+        this.props.snackbarShowMessage(`user ` + data.data.userid + ` created successfully.`, `success`);
+        localStorage.setItem("payment", 0)
+        this.setState({ response: data,
+     userid : "",
+     password : "",
+     confirm_password : ""
+    })}});
+}
+else
+{
+    if(this.state.userid.length > 8)
+    {
+        this.props.snackbarShowMessage(`user id cannot be more than 8 character.`, `error`);
+    }
+    if(this.state.password.length > 10)
+    {
+        this.props.snackbarShowMessage(`password cannot be more than 10 character.`, `error`);
+    }
+    if(this.state.password != this.state.confirm_password)
+    {
+        this.props.snackbarShowMessage(`Password not matched.`, `error`);
+    }
+    if(this.state.userid == "")
+    {
+        this.setState({userid_helpertext : true})
+    }
+    if(this.state.password == "")
+    {
+        this.setState({password_helpertext : true})
+    }
+    if(this.state.confirm_password == "")
+    {
+        this.setState({confirmPass_helpertext : true})
+    }
+   
+}
+
     }
     render()
     {

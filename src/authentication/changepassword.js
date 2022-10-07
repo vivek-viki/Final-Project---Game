@@ -68,7 +68,7 @@ class ChangePassword extends React.Component {
 
     ChangePassword = () => {
         debugger;
-        if(this.state.password != "" && (this.state.password.length <=10 && this.state.confirm_password <=10) && this.state.userid != "" && this.state.reenter_password != "" && this.state.password === this.state.reenter_password)
+        if(this.state.password != "" && this.state.userid != "" && this.state.reenter_password != "" && this.state.password === this.state.reenter_password)
         {
             axios.put(URL.Endpoints.FORGOT_PASSWORD, {
                 userid : this.state.userid,

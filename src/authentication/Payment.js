@@ -20,8 +20,8 @@ function Payment(){
             <StripeCheckout
             token={onToken}
             name="pay 200"
-            currency="Inr"
-            stripeKey="pk_test_51LpmgmSHCiDiV2Q2Bh1qc38JcmK0kEMpUU7YVHzjs3MsIlbWhgcdG8QWd9ZOJFEQ0kXe12MDhbkV0Zjccx0giwcd00bs6K36VC"
+            // currency="Inr"
+            stripeKey="pk_test_51Lq9QZSFVWSI4lM8nP40fV4QvjvFrOCFiOrG8sv7hXFTDAkQqZMCofn9E6mWODZAr11XeGQzuy5pkpdGxVqigEdj00jrwx8FPq"
           />  
           </>
           :
