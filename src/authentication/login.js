@@ -66,6 +66,7 @@ class Login extends React.Component {
                         localStorage.setItem("enableuser", 1);
                         localStorage.setItem("userid", data.data[0].userid);
                         this.props.navigate("/dashboard");
+                        window.location.reload(true);
                     }
                     else
                     {

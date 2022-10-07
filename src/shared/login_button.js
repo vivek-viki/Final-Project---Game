@@ -24,6 +24,7 @@ class Login_Button extends React.Component {
 
     login = () => {
             this.props.navigate("/Login");
+
    
     }
 
